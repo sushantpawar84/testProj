@@ -18,6 +18,10 @@ public class HelloWorldSrv1Controller {
 	@Autowired
 	DiscoveryClient registry;
 
+	/**
+	 * Main calling method of Service 1
+	 * @return
+	 */
 	@RequestMapping("/hello")
 	String home() {
 		String service1Str = "Hello World from Service 1 ";
