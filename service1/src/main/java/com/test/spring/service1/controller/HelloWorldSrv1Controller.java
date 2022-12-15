@@ -12,6 +12,9 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class HelloWorldSrv1Controller {
 
+	/**
+	 * Eureka Server instance Object Injection.
+	 */
 	@Autowired
 	DiscoveryClient registry;
 
