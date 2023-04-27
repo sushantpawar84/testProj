@@ -37,8 +37,9 @@ public class HelloWorldSrv1Controller {
 		System.out.println("instance Uri : " + instances.get(0).getUri());
 		System.out.println("instance Host : " + instances.get(0).getHost());
 
-		 String url = instances.get(0).getUri().toString(); // "http://localhost:8081/hello"; 
-		 url = url + "/hello"; 
+		/* "http://localhost:8081/hello"; */
+		 String url = instances.get(0).getUri().toString(); 
+		 url = url + "/hello";
 		 RestTemplate restTemplate = new RestTemplate(); 
 		 String result = restTemplate.getForObject(url, String.class);
 		 
