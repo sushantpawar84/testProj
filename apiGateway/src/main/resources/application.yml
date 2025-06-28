@@ -1,6 +1,7 @@
 server:
-  port: 8080
-
+ port: 8080
+ servlet:
+    context-path: /
 spring:
   application:
     name: apigateway
@@ -8,8 +9,12 @@ spring:
     gateway:
       default-filters:
         - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      discovery:
+       locator:
+        lower-case-service-id: true
+        enabled: true
       routes:
-        - id: SERVICE1
+        - id: service1
           uri: lb://service1
           predicates:
             - Path=/**
