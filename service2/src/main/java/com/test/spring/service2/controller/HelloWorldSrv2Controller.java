@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
+@RequestMapping("/api/service2")
 public class HelloWorldSrv2Controller {
 
 	/**
@@ -25,7 +26,7 @@ public class HelloWorldSrv2Controller {
 	@RequestMapping("/hello")
 	String home() {
 		String service2Str = "Hello World from Service 2 ";
-		String service3Str = getHelloClient();
+		String service3Str = ""; //getHelloClient();
 		String finalStr = service2Str.concat(" | ").concat(service3Str);
 		return finalStr;
 	}

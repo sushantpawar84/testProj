@@ -7,16 +7,27 @@ spring:
     name: apigateway
   cloud:
     gateway:
-      discovery:
-        locator:
-          enabled: true
-      default-filters:
-        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
-      routes:
-        - id: ms-service1
-          uri: lb://SERVICE1
-          predicates:
-            - Path=/service1/**
+      server:
+        webflux:
+          httpclient:
+            wiretap: true
+          discovery:
+            locator:
+              enabled: true
+          default-filters:
+            - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+          routes:
+            - id: ms-service1
+              uri: lb://SERVICE1
+              predicates:
+                - Path=/api/service1/**
+            - id: ms-service2
+              uri: lb://SERVICE2
+              predicates:
+                - Path=/api/service2/**
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
 eureka:
   client:
     serviceUrl:
